@@ -1,0 +1,45 @@
+.twenty-chars {
+    max-width: 20ch;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 20px;
+}
+
+header {
+    background: #5b665e;
+    border: 0px;
+}
+
+body {
+    background-image: url('https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?auto=compress&cs=tinysrgb&w=1600');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.user-name {
+    font-size:35px;
+    margin-top:15px;
+    color: #92d1a3;
+}
+
+.lg {
+    font: #92d1a3;
+}
+
+.edit-note {
+    border-radius: 7px;
+    padding: 10px;
+    background: #5b665e;
+    font-weight: 600;
+    font-size: 17px;
+    color:  #92d1a3;
+}
+
+.view {
+    padding: 10px;
+    font-size: 19px;
+    background: #5b665e;
+    color:  #92d1a3;
+}

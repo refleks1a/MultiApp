@@ -1,0 +1,20 @@
+{% extends 'main/base.html' %}
+{% block title %}The Notes{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <a href="{% url 'notes_list' %}" class="btn btn-outline-dark m-1">Back</a>
+            <div class="card">
+                <div class="view">
+                    <h4>{{ note.title }}</h4>
+                    <p>{{ note.content }}</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
