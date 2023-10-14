@@ -1,0 +1,24 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+{% endblock title %}
+
+{% block content %}
+
+<div class="header-bar">
+    <a href="{% url 'main:main' %}">&#8592;Back</a>
+</div>
+
+<div class="container" style="max-width: 500px;">
+    <div class="row justify-content-center">
+                <form method="POST" enctype="multipart/form-data">
+
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <input class="button" type="submit" value="Submit">
+
+                </form>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,157 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Main{% endblock title %}
+
+{% block content %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+      <symbol id="check2" viewBox="0 0 16 16">
+        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
+      </symbol>
+      <symbol id="circle-half" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"></path>
+      </symbol>
+      <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"></path>
+        <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"></path>
+      </symbol>
+      <symbol id="sun-fill" viewBox="0 0 16 16">
+        <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"></path>
+      </symbol>
+    </svg>
+
+<main>
+
+  <div class="header">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 ">
+      <div class="col-md-3 mb-2 mb-md-0">
+        <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+          <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+        </a>
+      </div>
+
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="/" class="nav-link px-2 link-secondary">Home</a></li>
+        <li><a href="#" class="nav-link px-2">Features</a></li>
+        <li><a href="#" class="nav-link px-2">FAQs</a></li>
+        <li><a href="#" class="nav-link px-2">About</a></li>
+      </ul>
+
+      <div class="col-md-3 text-end">
+        {% if user.is_authenticated %}
+          <a href="logout"><button type="button" class="btn btn-outline-primary me-3">Logout</button></a>
+        {% else %}
+          <a href="{% url 'main:login' %}"><button type="button" class="btn btn-outline-primary me-3">Login</button></a>
+          <a href="{% url 'main:signup' %}"><button type="button" class="btn btn-primary me-3">Sign-up</button></a>
+        {% endif %}
+      </div>
+    </header>
+  </div>
+
+<!--    <div>-->
+<!--      <form method="get">-->
+<!--        <label for="search-bar" style="color: white;">Search for anything you want!</label>-->
+<!--        <input type="search" id="search-bar" class="form-control form-control-dark text-bg-dark search-bar" placeholder="Search..." aria-label="Search">-->
+<!--      </form>-->
+<!--    </div>-->
+
+    <div class="container">
+
+        <div class="weather-side">
+          <div class="weather-gradient"></div>
+          <div class="date-container">
+            <h2 class="date-dayname">{{ daily_data.day_week }}</h2><span class="date-day"></span><i class="location-icon" data-feather="map-pin"></i>
+          </div>
+          <div class="weather-container"><i class="weather-icon" data-feather="sun"></i>
+            <h1 class="weather-temp">{{ daily_data.temperatureAvg|floatformat:"0" }}°C</h1>
+          </div>
+        </div>
+
+        <div class="info-side">
+
+          <div class="today-info-container">
+            <div class="today-info">
+              <div class="precipitation"> <span class="title">PRECIPITATION</span><span class="value">{{ daily_data.precipitationProbabilityAvg|floatformat:"0" }} %</span>
+                <div class="clear"></div>
+              </div>
+              <div class="humidity"> <span class="title">HUMIDITY</span><span class="value">{{ daily_data.humidityAvg|floatformat:"1" }} %</span>
+                <div class="clear"></div>
+              </div>
+              <div class="wind"> <span class="title">WIND</span><span class="value">{{ daily_data.windSpeedAvg|floatformat:"1"}} km/h</span>
+                <div class="clear"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="week-container">
+            <ul class="week-list">
+              {% for day,temp in weekly_data.items %}
+                <li><i class="day-icon" data-feather="cloud"></i><span class="day-name">{{ day }}</span><span class="day-temp">{{ temp|floatformat:"0" }}°C</span></li>
+              {% endfor %}
+              <div class="clear"></div>
+            </ul>
+          </div>
+
+          <div class="location-container">
+            <span style="font-weight: 600;" class="title">{{ location.city|upper }}, {{ location.country|upper }}</span>
+          </div>
+        </div>
+
+      <div class="list-group list-group-radio d-grid gap-2 border-0" style="width: 430px; height 330px; position: relative;left: -25px;">
+        {% if user.is_authenticated %}
+          <a class="create-notification btn btn-primary" href="{% url 'notifications:create_notification' %}">Add notification</a>
+        {% else %}
+          <a class="create-notification btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" href="{% url 'notifications:create_notification' %}">Add notification</a>
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content" style="background: #343d4b;">
+                <div class="modal-body">
+                  <p class="model-window-text">You should login, in order to add notifications</p>
+                </div>
+                <div class="modal-footer">
+                  <a href="{% url 'main:login' %}" class="btn btn-primary my-2" style="color: white;font-size:1.25em; min-height: 30px">Log-in</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+        <div class="mt-4">
+          {% if notifications|length < 4 %}
+            {% for notification in notifications %}
+            <div class="list-group mt-2" style="width: 370px;">
+                <a href="{% url 'notifications:all_notification' %}" class="list-group-item list-group-item-action" aria-current="true">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ notification.title }}</h5>
+                    <small>{{ notification.expiry_date }}</small>
+                  </div>
+                  <p class="mb-1">{{ notification.content }}</p>
+                </a>
+            </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+
+      </div>
+
+    <div class="row align-items-md-stretch">
+      {% for article in news %}
+            <div class="col-md-6 mt-4 article">
+              <div class="h-100 p-5 text-bg-dark rounded-3" style="background-image: url('{{ article.urlToImage }}'); background-repeat: no-repeat; background-size: cover; opacity: .8;">
+                <h2 style="filter: brightness(220%);">{{ article.title }}</h2>
+                <p>{{ article.description }}</p>
+                <p>Posted at: {{ article.publishedAt }}</p>
+                <button class="btn btn-outline-light btn_news_detail" type="button"><a target="_blank" class="news_detail" href="{{ article.url }}" style="color: white">Details</a></button>
+              </div>
+            </div>
+      {% endfor %}
+    </div>
+
+    <footer class="pt-3 mt-4 text-body-secondary footer">
+      © 2023
+    </footer>
+  </div>
+</main>
+
+
+{% endblock content %}
